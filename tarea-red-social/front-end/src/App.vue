@@ -1,26 +1,25 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <button class = "BtnOption" @click = "Friends">Friends</button>
+    <button class = "BtnOption" @click = "FriendshipRequest">FriendshipRequest</button>
+    <button class = "BtnOption"  >Prueba</button>
+  </div>
+  <Friend-card></Friend-card>
+  
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import FriendCard from './components/FriendCard.vue'
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FriendCard
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
