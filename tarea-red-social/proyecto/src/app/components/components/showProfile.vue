@@ -39,7 +39,7 @@
 <script>
 // import axios
 const axios = require('axios'); 
-const correo = require('../components/userInfo.js');
+const correo =require ('../userInfo.js');
  
 export default {
   name: "showProfile",
@@ -59,7 +59,7 @@ export default {
     // Get All Products
     async getUserInfo() {
       try {
-        const response = await axios.get(`http://localhost:3000/usuarios/especifico/${correo.correo}`);
+        const response = await axios.get(`http://localhost:3000/usuarios/especifico/${correoUsuario}`);
         this.items = response.data;
       } catch (err) {
         console.log(err);

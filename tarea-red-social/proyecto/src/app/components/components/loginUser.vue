@@ -42,7 +42,7 @@
 import axios from "axios";
 import showProfileVue from "./showProfile.vue";
 //import correo from "./components/userInfo.js";
-const correo = require('../../app/components/userInfo.js');
+const correo = require('../userInfo.js');
 
 export default {
   name: "loginUser",
