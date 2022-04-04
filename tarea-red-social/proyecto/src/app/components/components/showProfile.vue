@@ -70,7 +70,7 @@ export default {
     async deleteUsuario(email) {
       try {
         await axios.delete(`http://localhost:3000/usuarios/${email}`);
-        this.getUsers();
+        this.getUserInfo();
       } catch (err) {
         console.log(err);
       }

@@ -78,7 +78,7 @@ export default {
         );
         this.usuarioNombre = "";
         this.usuarioBiografia = "";
-        this.$router.push("/");
+        this.$router.push("/Account");
       } catch (err) {
         console.log(err);
       }
