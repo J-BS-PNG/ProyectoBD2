@@ -3,13 +3,13 @@
     <ul>
         <li class = 'list-item' v-for="item in list" :key="item.id">
             <div class ="content" >
-                <img v-bind:src = "item.img">
+                <img v-bind:src = img>
                 <div class="main">
                     <div class="header">
                         <span class = "Name">{{item.name}}</span>
                     </div>
                     <div class = "body">
-                        {{item.text}}
+                        {{"Amigos"}}
                     </div>
                 </div>
             </div>
@@ -18,22 +18,28 @@
 
 </template>
 <script>
+import axios from "axios";
 export default {
   name: 'FriendCard',
     data(){
         return {
-        list:[
-            {id:1 , name:"Fulano", text:"friendship", img:"https://freepngimg.com/thumb/toothless/167955-pic-toothless-dragon-png-download-free.png"},
-            {id:1 , name:"Mengano", text:"friendship ", img:"https://www.megaidea.net/wp-content/uploads/2020/03/dragon-chimuelo-19.png"},
-            {id:1 , name:"Cristiano", text:"friendship ", img:"https://i.pinimg.com/550x/85/f8/62/85f862aa62da01f7321a553bd4a6f81a.jpg"},
-            {id:1 , name:"Mengano", text:"friendship ", img:"https://www.megaidea.net/wp-content/uploads/2020/03/dragon-chimuelo-19.png"},
-            {id:1 , name:"Cristiano", text:"friendship ", img:"https://i.pinimg.com/550x/85/f8/62/85f862aa62da01f7321a553bd4a6f81a.jpg"},
-            {id:1 , name:"Fulano", text:"friendship", img:"https://freepngimg.com/thumb/toothless/167955-pic-toothless-dragon-png-download-free.png"},
-            {id:1 , name:"Mengano", text:"friendship ", img:"https://www.megaidea.net/wp-content/uploads/2020/03/dragon-chimuelo-19.png"},
-            {id:1 , name:"Cristiano", text:"friendship ", img:"https://i.pinimg.com/550x/85/f8/62/85f862aa62da01f7321a553bd4a6f81a.jpg"},
-            {id:1 , name:"Mengano", text:"friendship ", img:"https://www.megaidea.net/wp-content/uploads/2020/03/dragon-chimuelo-19.png"},
-            {id:1 , name:"Cristiano", text:"friendship ", img:"https://i.pinimg.com/550x/85/f8/62/85f862aa62da01f7321a553bd4a6f81a.jpg"}
-            ],
+        list: this.getFriends(),
+        img: "https://freepngimg.com/thumb/toothless/167955-pic-toothless-dragon-png-download-free.png"
+        }
+    },
+    created: function(){
+        this.getFriends();
+    },
+    methods: {
+        // Create New product
+        async getFriends() {
+            try {
+                const response = await axios.get(`http://localhost:5000/friends/friendships/Eduardj.Com@gmail.com`);
+                console.log(response.data);
+                this.list = response.data;
+            } catch (err) {
+                console.log(err);
+            }
         }
     }
 }
