@@ -19,6 +19,8 @@ app.use(express.json());
 //Routes
 app.use('/chats', require('./routes/chats'));
 app.use('/', require('./routes/routes'));
+//app.use('/chats', require('./routes/chats'));
+app.use('/publicas', require('./routes/publicas'));
 
 //Static files
 app.use(express.static(__dirname + '/public'));
