@@ -47,11 +47,11 @@ export default {
             } catch (err) {
                 console.log(err);
             }
-        }
+        },
 
         // async acceptRequest(){
         //     try {
-        //         const response = await axios.get(`http://localhost:5000/friends/friendshipsRequestsAccept/Eduardj.Com@gmail.com/Correo1@gmail.com`);
+        //         const response = await axios.put(`http://localhost:5000/friends/friendshipsRequestsAccept/Eduardj.Com@gmail.com/Correo1@gmail.com`);
         //         console.log(response.data);
         //         this.list = response.data;
         //     } catch (err) {

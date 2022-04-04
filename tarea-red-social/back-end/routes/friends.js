@@ -12,7 +12,7 @@ friend.get('/friendshipsRequests/:id', async (req,res)=>{
     const result = await userModel.findRequestById(req.params.id)
     res.json(result)
 })
-friend.get('/friendshipsRequestsAccept/:id/:id2', async (req,res)=>{
+friend.put('/friendshipsRequestsAccept/:id/:id2', async (req,res)=>{
     const result = await userModel.findRequestById(req.params.id, req.params.id2)
     res.json(result)
 })
