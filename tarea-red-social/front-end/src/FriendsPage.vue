@@ -19,7 +19,7 @@ import FriendCard from './components/FriendCard.vue'
 import FriendshipRequest from './components/FriendshipRequest.vue'
 
 export default {
-  name: 'App',
+  name: 'Friends',
   data(){
     return{
       opcion:2,
