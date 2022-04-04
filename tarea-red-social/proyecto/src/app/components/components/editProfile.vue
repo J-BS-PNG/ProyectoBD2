@@ -33,13 +33,14 @@
  <script>
 // import axios
 import axios from "axios";
-
+const correo =require ('../userInfo.js');
 export default {
   name: "EditCuenta",
   data() {
     return {
       usuarioNombre: "",
       usuarioBiografia: "",
+      correoUsuario: correo.correo
     };
   },
   created: function () {
@@ -54,7 +55,7 @@ export default {
     async getUsuarioByEmail() {
       try {
         const response = await axios.get(
-          `http://localhost:3000/usuarios/especifico/${this.$route.params.email}`
+          `http://localhost:3000/usuarios/especifico/${correo.correo}`
         );
         console.log(response);
         this.usuarioNombre = response.data[0].usuario_nombre;
@@ -69,7 +70,7 @@ export default {
     async updateCuenta() {
       try {
         await axios.put(
-          `http://localhost:3000/usuarios/${this.$route.params.email}`,
+          `http://localhost:3000/usuarios/${correo.correo}`,
           {
             usuario_nombre: this.usuarioNombre,
             usuario_biografia: this.usuarioBiografia,
@@ -77,7 +78,7 @@ export default {
         );
         this.usuarioNombre = "";
         this.usuarioBiografia = "";
-        this.$router.push("/");
+        this.$router.push("/Account");
       } catch (err) {
         console.log(err);
       }

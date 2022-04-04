@@ -1,7 +1,6 @@
 <template>
 
   <div>
-    <h2>{{correo.correo}}</h2>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -39,7 +38,7 @@
 <script>
 // import axios
 const axios = require('axios'); 
-const correo = require('../components/userInfo.js');
+const correo =require ('../userInfo.js');
  
 export default {
   name: "showProfile",
@@ -59,6 +58,7 @@ export default {
     // Get All Products
     async getUserInfo() {
       try {
+        console.log(correo.correo);
         const response = await axios.get(`http://localhost:3000/usuarios/especifico/${correo.correo}`);
         this.items = response.data;
       } catch (err) {
@@ -70,7 +70,7 @@ export default {
     async deleteUsuario(email) {
       try {
         await axios.delete(`http://localhost:3000/usuarios/${email}`);
-        this.getUsers();
+        this.getUserInfo();
       } catch (err) {
         console.log(err);
       }
