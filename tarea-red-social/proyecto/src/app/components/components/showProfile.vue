@@ -1,7 +1,6 @@
 <template>
 
   <div>
-    <h2>{{correo.correo}}</h2>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -59,7 +58,8 @@ export default {
     // Get All Products
     async getUserInfo() {
       try {
-        const response = await axios.get(`http://localhost:3000/usuarios/especifico/${correoUsuario}`);
+        console.log(correo.correo);
+        const response = await axios.get(`http://localhost:3000/usuarios/especifico/${correo.correo}`);
         this.items = response.data;
       } catch (err) {
         console.log(err);
