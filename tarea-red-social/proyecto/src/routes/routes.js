@@ -15,7 +15,7 @@ router.get('/usuarios', mostrarUsuarios);
 router.get('/usuarios/especifico/:email', mostrarUsuarioPorEmail);
 
 //obtener contraseña por email
-router.get('/usuarios/:email', mostrarConstrasenaPorEmail);
+router.get('/usuarios/contrasena/:email', mostrarConstrasenaPorEmail);
 
 // crear un nuevo usuario
 router.post('/usuarios', crearUsuario);

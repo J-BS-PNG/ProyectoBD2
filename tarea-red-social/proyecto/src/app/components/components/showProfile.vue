@@ -1,8 +1,7 @@
 <template>
+
   <div>
-    <router-link :to="{ name: 'Create' }" class="button is-success mt-5"
-      >Register</router-link
-    >
+    <h2>{{correo.correo}}</h2>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -26,7 +25,7 @@
             >
             <a
               class="button is-danger is-small"
-              @click="deleteUsuario(item.usuario_email)"
+              @click="deleteUsuario(correoUsuario)"
               >Delete</a
             >
           </td>
@@ -34,29 +33,33 @@
       </tbody>
     </table>
   </div>
+  <router-link :to="{ name: 'Login' }" class="button is-success mt-5">Log out</router-link>
 </template>
 
 <script>
 // import axios
 const axios = require('axios'); 
+const correo = require('../components/userInfo.js');
  
 export default {
   name: "showProfile",
+  
   data() {
     return {
       items: [],
+      correoUsuario: correo.correo
     };
   },
  
   created() {
-    this.getUsers();
+    this.getUserInfo();
   },
  
   methods: {
     // Get All Products
-    async getUsers() {
+    async getUserInfo() {
       try {
-        const response = await axios.get("http://localhost:3000/usuarios");
+        const response = await axios.get(`http://localhost:3000/usuarios/especifico/${correo.correo}`);
         this.items = response.data;
       } catch (err) {
         console.log(err);

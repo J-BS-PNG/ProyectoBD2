@@ -1,5 +1,8 @@
 <template>
   <div>
+  <user-logged :email = "usuarioCorreo"></user-logged>
+  </div>
+  <div>
     <div class="field">
       <label class="label">Email</label>
       <div class="control">
@@ -24,18 +27,29 @@
       </div>
     </div>
  
+
     <div class="control">
       <button class="button is-success" @click="login">Entrar</button>
+      
     </div>
   </div>
+
+    <router-link :to="{ name: 'Create' }" class="button is-success mt-5">Register</router-link>
 </template>
  
  <script>
 // import axios
 import axios from "axios";
- 
+import showProfileVue from "./showProfile.vue";
+//import correo from "./components/userInfo.js";
+const correo = require('../../app/components/userInfo.js');
+
 export default {
-  name: "AddProduct",
+  name: "loginUser",
+
+  components:{
+    showProfileVue
+  },
   data() {
     return {
       usuarioCorreo: "",
@@ -44,20 +58,37 @@ export default {
   },
   methods: {
 
-    // Create New product
+    shareCorreo(){
+       this.$emit("EmitCorreo". this.usuarioCorreo);
+    },
+
+    enterAccount(){
+      this.$router.push('/Account')
+      
+    },
+    // Get Product By Id
     async login() {
       try {
-        const response = await axios.get(`http://localhost:3000/usuario/login/${this.usuarioCorreo}`); 
-
+      
+        const response = await axios.get(
+          `http://localhost:3000/usuarios/contrasena/${this.usuarioCorreo}`
+        );
         console.log(response);
-
-        this.$router.push("/");
+        if(this.usuarioContrasena == response.data[0].usuario_contrasena){
+          console.log("si");
+          correo.correo = this.usuarioCorreo;
+          this.enterAccount();
+        } else {console.log("Contraseña o correo incorrecto")
+        //sad
+        
+        }
       } catch (err) {
         console.log(err);
       }
     },
   },
 };
+
 </script>
  
 <style>

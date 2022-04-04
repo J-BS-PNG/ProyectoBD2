@@ -64,6 +64,7 @@
       <button class="button is-success" @click="Registrar">registrar</button>
     </div>
   </div>
+   <router-link :to="{ name: 'Login' }" class="button is-success mt-5">Back</router-link>
 </template>
 
 <script>

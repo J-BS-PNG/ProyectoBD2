@@ -27,6 +27,7 @@
       <button class="button is-success" @click="updateCuenta">ACTUALIZAR</button>
     </div>
   </div>
+  <router-link :to="{ name: 'Account' }" class="button is-success mt-5">Back</router-link>
 </template>
  
  <script>
@@ -45,6 +46,10 @@ export default {
     this.getUsuarioByEmail();
   },
   methods: {
+    goBack(email){
+      this.$router.push('/Account')
+      
+    },
     // Get Product By Id
     async getUsuarioByEmail() {
       try {
